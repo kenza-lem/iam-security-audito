@@ -1,0 +1,160 @@
+{
+  "kind": "Anonymized observed subset; not a fresh full audit",
+  "source": "Lab audit supplied by user",
+  "new_key_inventory_validated": false,
+  "findings": [
+    {
+      "control": "IAM-001",
+      "resource": "<root_account>",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "mfa_active": "true",
+        "password_enabled": "true"
+      },
+      "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-002",
+      "resource": "<root_account>",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "active_key_flags": [
+          "false",
+          "false"
+        ]
+      },
+      "recommendation": "No active root key observed; inactive-key absence is not established."
+    },
+    {
+      "control": "IAM-003",
+      "resource": "auditor01",
+      "status": "FAIL",
+      "severity": "MEDIUM",
+      "evidence": {
+        "mfa_active": "false",
+        "password_enabled": "true"
+      },
+      "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-003",
+      "resource": "auditor02",
+      "status": "FAIL",
+      "severity": "MEDIUM",
+      "evidence": {
+        "mfa_active": "false",
+        "password_enabled": "true"
+      },
+      "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-003",
+      "resource": "developer01",
+      "status": "FAIL",
+      "severity": "MEDIUM",
+      "evidence": {
+        "mfa_active": "false",
+        "password_enabled": "true"
+      },
+      "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-003",
+      "resource": "developer02",
+      "status": "FAIL",
+      "severity": "MEDIUM",
+      "evidence": {
+        "mfa_active": "false",
+        "password_enabled": "true"
+      },
+      "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-003",
+      "resource": "lab-admin",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "mfa_active": "true",
+        "password_enabled": "true"
+      },
+      "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-003",
+      "resource": "security01",
+      "status": "FAIL",
+      "severity": "MEDIUM",
+      "evidence": {
+        "mfa_active": "false",
+        "password_enabled": "true"
+      },
+      "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-006",
+      "resource": "developer01",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "administrator_pattern_observed": false,
+        "inventory_complete": true
+      },
+      "recommendation": "No administrator pattern observed in collected user/group policies; effective access is not proven limited."
+    },
+    {
+      "control": "IAM-006",
+      "resource": "developer02",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "administrator_pattern_observed": false,
+        "inventory_complete": true
+      },
+      "recommendation": "No administrator pattern observed in collected user/group policies; effective access is not proven limited."
+    },
+    {
+      "control": "IAM-006",
+      "resource": "lab-admin",
+      "status": "WARN",
+      "severity": "MEDIUM",
+      "evidence": {
+        "policy": {
+          "source": "group",
+          "owner": "LabAdmins",
+          "type": "managed",
+          "name": "AdministratorAccess",
+          "arn": "arn:aws:iam::aws:policy/AdministratorAccess",
+          "version": "v1"
+        },
+        "managed_administrator_access": true,
+        "admin_like_allow": true,
+        "developer_scope": false
+      },
+      "recommendation": "Review against job needs; boundaries, SCPs, conditions and explicit denies can restrict effective access."
+    },
+    {
+      "control": "IAM-009",
+      "resource": "i-0123456789abcdef0",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "instance_id": "i-0123456789abcdef0",
+        "region": "eu-north-1",
+        "name": "iam-security-lab-ec2",
+        "state": "running",
+        "instance_profile_arn": "arn:aws:iam::123456789012:instance-profile/EC2-S3-Role",
+        "roles": [
+          {
+            "name": "EC2-S3-Role",
+            "arn": "arn:aws:iam::123456789012:role/EC2-S3-Role"
+          }
+        ],
+        "complete": true
+      },
+      "recommendation": "Role attachment observed; permissions and application credential usage are not evaluated."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["iam:GetUser", "iam:ListMFADevices", "iam:EnableMFADevice"],
+      "Resource": "arn:aws:iam::391894613419:user/auditor01"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iam:CreateVirtualMFADevice",
+      "Resource": "arn:aws:iam::391894613419:mfa/auditor01-assisted-mfa"
+    }
+  ]
+}
