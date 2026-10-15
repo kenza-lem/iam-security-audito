@@ -1,6 +1,6 @@
 # AWS IAM Security Auditor
 
-Auditeur de sécurité AWS IAM en Python/Boto3. Les audits réels des credentials, permissions et rôles EC2 sont validés sur le lab. Une policy AdministratorAccess attachée directement à un développeur a été détectée, retirée manuellement et son absence confirmée par re-test. CloudTrail a documenté l'attribution et le retrait. DeveloperPolicy et AuditorPolicy ont été validées avec Access Analyzer sans findings. L'inventaire détaillé des clés vient d'être ajouté : testé localement, dernier essai AWS requis.
+Auditeur de sécurité AWS IAM en Python/Boto3. Les audits réels des credentials, permissions et rôles EC2 sont validés sur le lab. Une policy AdministratorAccess attachée directement à un développeur a été détectée, retirée manuellement et son absence confirmée par re-test. CloudTrail a documenté l'attribution et le retrait. DeveloperPolicy et AuditorPolicy ont été validées avec Access Analyzer sans findings. L'inventaire détaillé des clés a été exécuté sur le lab : aucun des six IAM Users ne possède de clé active ou inactive ; collecte complète. Les cas avec clés et les erreurs restent validés par tests locaux.
 
 Python 3.10+ ; AWS CLI v2 ; Boto3. Console + JSON, 30 tests locaux, aucun besoin d'organisation AWS. Usage lab/portfolio ; ne pas interpréter les contrôles comme une certification du moindre privilège.
 
@@ -70,13 +70,13 @@ La présence d'un rôle ne prouve ni le moindre privilège ni l'utilisation de s
 - Les boundaries, SCPs, resource policies, sessions et rôles assumables ne sont pas évalués ; aucune conclusion complète sur les permissions effectives. Les conditions et refus peuvent restreindre les grants signalés.
 - EC2 est intégré sur les régions explicitement choisies. CloudTrail et Access Analyzer ont été utilisés séparément avec AWS CLI, sans intégration automatique au script.
 - Les rapports contiennent des métadonnées sensibles ; reports/ est exclu de Git.
-- 30 tests locaux : détection, erreurs, pagination SDK IAM/EC2/keys et remédiation assistée. IAM et EC2 sont validés sur le lab ; le nouvel inventaire détaillé des clés et la remédiation MFA attendent leur validation réelle. La CI GitHub est configurée pour Python 3.10 et 3.13 ; elle n'a pas encore été exécutée sur GitHub.
+- 30 tests locaux : détection, erreurs, pagination SDK IAM/EC2/keys et remédiation assistée. IAM, EC2 et la collecte des clés (six utilisateurs sans clé) sont validés sur le lab ; la remédiation MFA attend sa validation réelle. La CI GitHub est configurée pour Python 3.10 et 3.13 ; elle n'a pas encore été exécutée sur GitHub.
 
 ## Prochaines étapes
 
 Un module séparé de remédiation MFA assistée est disponible : voir MFA-REMEDIATION.md. Son pilote est limité à auditor01 et utilise un rôle distinct. Le programme auditor.py conserve son périmètre read-only.
 
-Dernier essai des clés avec les permissions de audit-policy.json, traitement des cinq findings MFA ouverts, puis publication. docs/REVIEW.md rassemble les preuves et limites ; docs/INTERVIEW.md fournit le descriptif CV et entretien. examples/audit-observed-summary.json est un extrait anonymisé des résultats réellement observés, pas un rapport de la dernière version ni un environnement sans risque.
+Audit final exécuté avec complete=True : IAM-004 PASS pour les six utilisateurs, IAM-006 PASS pour developer02 et IAM-009 PASS pour le rôle EC2. Les cinq findings MFA restent ouverts. Publication GitHub et CI à confirmer. docs/REVIEW.md rassemble les preuves et limites ; docs/INTERVIEW.md fournit le descriptif CV et entretien. examples/audit-observed-summary.json est un extrait anonymisé de l'audit final observé ; il ne représente pas un environnement sans risque.
 
 ## Architecture
 

@@ -37,7 +37,7 @@ Dans chaque CloudTrailEvent, vérifier requestParameters.userName et policyArn, 
 ## Critères de livraison V1
 
 - Tests locaux passants ; CI GitHub à confirmer après publication.
-- Dernier audit avec inventaire détaillé des clés à exécuter ; complete=True ne signifie pas sans FAIL.
+- Audit final avec inventaire détaillé des clés exécuté : six IAM Users sans clé active ou inactive, aucune erreur de collecte, complete=True. Les cas avec clés sont testés localement ; complete=True ne signifie pas sans FAIL.
 - Les cinq findings MFA restent documentés ouverts tant que la correction et le re-test ne sont pas prouvés.
 - Authentification SSO abandonnée au profit de aws login + AssumeRole ; CSV/HTML et remédiation généralisée hors V1.
 - Membership : inventaire et absence de groupe couverts, conformité de chaque nom de groupe au RBAC non automatisée.

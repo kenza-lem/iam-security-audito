@@ -22,4 +22,4 @@ Développé un auditeur AWS IAM en Python/Boto3 avec authentification temporaire
 
 **Quelles limites ?** Credential report potentiellement ancien, activité partielle, pas de simulation globale des permissions effectives, SCPs/boundaries/resource policies hors analyse, régions EC2 explicites, cinq findings MFA encore ouverts. CloudTrail et Access Analyzer ont été utilisés séparément via CLI.
 
-**Comment avez-vous testé ?** 30 tests locaux avec cas d'erreur, mocks et botocore Stubber pour la pagination ; audits IAM/EC2 réels sur le lab. Les clés détaillées et la remédiation MFA nécessitent encore leur validation réelle.
+**Comment avez-vous testé ?** 30 tests locaux avec cas d'erreur, mocks et botocore Stubber pour la pagination ; audits IAM/EC2 réels sur le lab. La collecte des clés a aussi été exécutée sur les six utilisateurs du lab, tous sans clé. Les cas avec clés restent couverts localement et la remédiation MFA n'est pas validée sur AWS.

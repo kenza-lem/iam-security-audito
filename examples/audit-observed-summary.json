@@ -1,7 +1,8 @@
 {
-  "kind": "Anonymized observed subset; not a fresh full audit",
-  "source": "Lab audit supplied by user",
-  "new_key_inventory_validated": false,
+  "kind": "Anonymized observed subset of final lab audit",
+  "source": "User-executed audit-final.json",
+  "collection_complete": true,
+  "key_inventory_observed_case": "Six IAM Users with no keys; non-empty key scenarios tested locally",
   "findings": [
     {
       "control": "IAM-001",
@@ -92,6 +93,72 @@
         "password_enabled": "true"
       },
       "recommendation": "Review MFA configuration; centrally managed root credentials require contextual review."
+    },
+    {
+      "control": "IAM-004",
+      "resource": "auditor01",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "key_count": 0,
+        "source": "ListAccessKeys"
+      },
+      "recommendation": "No IAM User access keys observed; service-specific credentials are outside scope."
+    },
+    {
+      "control": "IAM-004",
+      "resource": "auditor02",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "key_count": 0,
+        "source": "ListAccessKeys"
+      },
+      "recommendation": "No IAM User access keys observed; service-specific credentials are outside scope."
+    },
+    {
+      "control": "IAM-004",
+      "resource": "developer01",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "key_count": 0,
+        "source": "ListAccessKeys"
+      },
+      "recommendation": "No IAM User access keys observed; service-specific credentials are outside scope."
+    },
+    {
+      "control": "IAM-004",
+      "resource": "developer02",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "key_count": 0,
+        "source": "ListAccessKeys"
+      },
+      "recommendation": "No IAM User access keys observed; service-specific credentials are outside scope."
+    },
+    {
+      "control": "IAM-004",
+      "resource": "lab-admin",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "key_count": 0,
+        "source": "ListAccessKeys"
+      },
+      "recommendation": "No IAM User access keys observed; service-specific credentials are outside scope."
+    },
+    {
+      "control": "IAM-004",
+      "resource": "security01",
+      "status": "PASS",
+      "severity": null,
+      "evidence": {
+        "key_count": 0,
+        "source": "ListAccessKeys"
+      },
+      "recommendation": "No IAM User access keys observed; service-specific credentials are outside scope."
     },
     {
       "control": "IAM-006",
